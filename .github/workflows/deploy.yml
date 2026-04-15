@@ -12,6 +12,7 @@ permissions:
 jobs:
   build-and-deploy:
     concurrency: ci-${{ github.ref }}
+    environment: github-pages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
