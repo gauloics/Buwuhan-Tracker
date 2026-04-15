@@ -3,11 +3,11 @@ import { useCloud } from '../../context/CloudContext.jsx';
 import SyncStatus from '../UI/SyncStatus.jsx';
 
 const NAV_ITEMS = [
-  { to: '/', icon: '📊', label: 'Dashboard' },
-  { to: '/catat', icon: '✍️', label: 'Catat' },
-  { to: '/tamu', icon: '👥', label: 'Buku Tamu' },
-  { to: '/acara', icon: '🎊', label: 'Acara' },
-  { to: '/pengaturan', icon: '⚙️', label: 'Pengaturan' },
+  { to: '/app', icon: '📊', label: 'Dashboard' },
+  { to: '/app/catat', icon: '✍️', label: 'Catat' },
+  { to: '/app/tamu', icon: '👥', label: 'Buku Tamu' },
+  { to: '/app/acara', icon: '🎊', label: 'Acara' },
+  { to: '/app/pengaturan', icon: '⚙️', label: 'Pengaturan' },
 ];
 
 export default function Sidebar() {
@@ -26,7 +26,7 @@ export default function Sidebar() {
           <NavLink
             key={to}
             to={to}
-            end={to === '/'}
+            end={to === '/app'}
             className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}
           >
             <span className="nav-icon">{icon}</span>
@@ -98,7 +98,7 @@ export function MobileNav() {
         <NavLink
           key={to}
           to={to}
-          end={to === '/'}
+          end={to === '/app'}
           className={({ isActive }) => `mobile-nav-item${isActive ? ' active' : ''}`}
         >
           <span className="mobile-icon">{icon}</span>

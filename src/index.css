@@ -712,41 +712,164 @@ select option {
 .text-gold { color: var(--gold-400); }
 .font-bold { font-weight: 700; }
 .truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-/* ─── Legal Links ───────────────────────────────────────── */
-.legal-footer {
-  margin-top: 12px;
-  padding: 0 4px;
+/* ─── Landing Page ────────────────────────────────────────── */
+.landing-page {
+  background: var(--bg);
+  min-height: 100vh;
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+.landing-header {
+  padding: 24px 5%;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
 }
 
-.legal-link {
-  font-size: 0.65rem;
-  color: var(--text-muted);
-  transition: color 0.2s;
-  display: inline-block;
+.landing-logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--gold-400), var(--gold-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.legal-link:hover {
-  color: var(--gold-400);
-  text-decoration: underline;
+.hero-section {
+  padding: 160px 5% 80px;
+  text-align: center;
+  position: relative;
+  background: radial-gradient(circle at 50% 30%, rgba(217, 119, 6, 0.1) 0%, transparent 70%);
 }
 
-.legal-divider {
-  font-size: 0.65rem;
-  color: var(--border-light);
-  margin: 0 4px;
+.hero-title {
+  font-size:clamp(2.5rem, 8vw, 4.5rem);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.about-section {
+.hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.features-section {
+  padding: 80px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 48px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  padding: 40px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-gold);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.feature-h {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+.feature-p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.transparency-section {
+  padding: 80px 5%;
+  background: var(--bg-card);
+  border-radius: 40px;
+  margin: 40px 5%;
+  text-align: center;
+  border: 1px solid var(--border-light);
+}
+
+.transparency-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.google-drive-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 999px;
+  margin-bottom: 32px;
+  border: 1px solid var(--border);
+}
+
+.landing-footer {
+  padding: 80px 5% 40px;
   border-top: 1px solid var(--border);
-  padding-top: 16px;
-  margin-top: 8px;
+  text-align: center;
 }
 
-.about-meta {
-  font-size: 0.72rem;
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.footer-link {
   color: var(--text-muted);
-  margin-bottom: 8px;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: var(--gold-400);
+}
+
+@media (max-width: 768px) {
+  .hero-section { padding-top: 120px; }
+  .footer-links { flex-direction: column; gap: 16px; }
 }
