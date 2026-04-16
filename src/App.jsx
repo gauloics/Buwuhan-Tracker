@@ -52,10 +52,25 @@ function AppLayout() {
             <Route path="/catat" element={<CatatSumbangan />} />
             <Route path="/pengaturan" element={<Pengaturan />} />
           </Routes>
+          <AppFooter />
         </main>
         <MobileNav />
       </div>
     </>
+  );
+}
+
+function AppFooter() {
+  return (
+    <footer className="app-footer">
+      <div className="app-footer-links">
+        <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Kebijakan Privasi</a>
+        <span>&middot;</span>
+        <a href="/terms.html" target="_blank" rel="noopener noreferrer">Syarat &amp; Ketentuan</a>
+        <span>&middot;</span>
+        <span>v1.2.0 &copy; 2026 Buwuhan Tracker</span>
+      </div>
+    </footer>
   );
 }
 
