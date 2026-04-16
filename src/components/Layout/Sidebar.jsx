@@ -30,7 +30,7 @@ export default function Sidebar() {
             className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}
           >
             <span className="nav-icon">{icon}</span>
-            {label}
+            <span className="nav-label">{label}</span>
           </NavLink>
         ))}
       </nav>
@@ -52,8 +52,10 @@ export default function Sidebar() {
                 className="btn btn-secondary btn-sm w-full mt-8"
                 onClick={logout}
                 style={{ justifyContent: 'center' }}
+                title="Keluar Akun"
               >
-                Keluar Akun
+                <span className="btn-label">Keluar Akun</span>
+                <span className="btn-icon-alt" style={{ display: 'none' }}>🚪</span>
               </button>
             </div>
           ) : (
@@ -64,16 +66,17 @@ export default function Sidebar() {
                 <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
               </svg>
-              Masuk dengan Google
+              <span className="btn-label">Masuk Google</span>
+              <span className="btn-icon-alt" style={{ display: 'none' }}>🔑</span>
             </button>
           )
         )}
 
 
         {clientIdMissing && (
-          <div className="sync-badge offline">
+          <div className="sync-badge offline" title="Sinkronisasi Google Drive belum dikonfigurasi">
             <span className="sync-dot"></span>
-            <span>Sinkronisasi Google Drive belum dikonfigurasi</span>
+            <span className="sync-text">Sinkronisasi Google Drive belum dikonfigurasi</span>
           </div>
         )}
 
