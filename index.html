@@ -35,16 +35,16 @@
   <body>
     <div id="root"></div>
     <script type="text/javascript">
-      // Trik SPA untuk GitHub Pages
-      // Menangkap kembali path yang dipindahkan ke query parameter oleh 404.html
+      // Trik SPA untuk GitHub Pages (Single Page Apps)
+      // Menangkap kembali path yang dikirim melalui query parameter 'p' oleh 404.html
       (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
-          );
+        if (l.search) {
+          var params = new URLSearchParams(l.search);
+          var p = params.get('p');
+          if (p !== null) {
+            var newUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + p + l.hash;
+            window.history.replaceState(null, null, newUrl);
+          }
         }
       }(window.location))
     </script>

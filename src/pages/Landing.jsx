@@ -84,7 +84,7 @@ export default function Landing() {
           </div>
           <h2 className="section-title" style={{ marginTop: 0 }}>Privasi Anda Prioritas Kami</h2>
           <p className="hero-subtitle" style={{ maxWidth: '700px' }}>
-            Buwuhan Tracker menggunakan **Google Drive App Data Folder** untuk menyimpan data Anda. 
+            Buwuhan Tracker menggunakan <strong>Google Drive App Data Folder</strong> untuk menyimpan data Anda. 
             Ini berarti:
           </p>
           <div className="feature-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', marginTop: 40, textAlign: 'left' }}>

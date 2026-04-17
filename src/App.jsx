@@ -10,6 +10,7 @@ import DetailAcara from './pages/DetailAcara.jsx';
 import CatatSumbangan from './pages/CatatSumbangan.jsx';
 import Pengaturan from './pages/Pengaturan.jsx';
 import Landing from './pages/Landing.jsx';
+import NotFound from './pages/NotFound.jsx';
 
 import { GoogleDriveProvider } from './context/GoogleDriveContext.jsx';
 import { ManagedCloudProvider } from './context/ManagedCloudProvider.jsx';
@@ -27,8 +28,8 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/app/*" element={<AppLayout />} />
-            {/* Fallback redirect */}
-            <Route path="*" element={<Navigate to="/" replace />} />
+            {/* Catch-all for non-existent routes */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </AppProvider>
       </CloudProvider>
@@ -52,6 +53,8 @@ function AppLayout() {
               <Route path="/acara/:id" element={<DetailAcara />} />
               <Route path="/catat" element={<CatatSumbangan />} />
               <Route path="/pengaturan" element={<Pengaturan />} />
+              {/* Catch-all for non-existent routes inside the app */}
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
           <AppFooter />
