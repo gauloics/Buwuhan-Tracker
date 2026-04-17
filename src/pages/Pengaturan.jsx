@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { useApp } from '../context/AppContext.jsx';
 import { useCloud } from '../context/CloudContext.jsx';
 import { eksporJSON, imporJSON, DEFAULT_JENIS_BARANG } from '../utils/storage.js';
+import CollapsibleCard from '../components/UI/CollapsibleCard.jsx';
 
 export default function Pengaturan() {
   const { data, simpanProfile, tambahJenisBarang, hapusJenisBarang, loadFromExternal, resetData } = useApp();
@@ -148,8 +149,7 @@ export default function Pengaturan() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
 
         {/* ─── Profil ─── */}
-        <div className="card">
-          <h3 style={{ marginBottom: 16, fontSize: '1rem', fontWeight: 700 }}>👨‍👩‍👧 Profil Keluarga</h3>
+        <CollapsibleCard title="Profil Keluarga" icon="👨‍👩‍👧" defaultExpanded={true}>
           <form onSubmit={handleSimpanProfile}>
             <div className="form-group">
               <label className="form-label">Nama Keluarga</label>
@@ -166,11 +166,10 @@ export default function Pengaturan() {
               {savedProfile ? '✅ Tersimpan' : 'Simpan Profil'}
             </button>
           </form>
-        </div>
+        </CollapsibleCard>
 
         {/* ─── Jenis Barang ─── */}
-        <div className="card">
-          <h3 style={{ marginBottom: 4, fontSize: '1rem', fontWeight: 700 }}>📦 Jenis Barang Sumbangan</h3>
+        <CollapsibleCard title="Jenis Barang Sumbangan" icon="📦">
           <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: 16 }}>
             Tambah atau hapus jenis barang yang biasa disumbangkan di daerah Anda.
           </p>
@@ -205,11 +204,10 @@ export default function Pengaturan() {
               );
             })}
           </div>
-        </div>
+        </CollapsibleCard>
 
         {/* ─── Sinkronisasi Cloud ─── */}
-        <div className="card">
-          <h3 style={{ marginBottom: 4, fontSize: '1rem', fontWeight: 700 }}>☁️ Sinkronisasi Cloud</h3>
+        <CollapsibleCard title="Sinkronisasi Cloud" icon="☁️">
           <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: 16 }}>
             Pilih layanan cloud untuk mencadangkan data Anda secara otomatis & aman.
           </p>
@@ -229,7 +227,7 @@ export default function Pengaturan() {
                   <path d="M22.85 15l-3.43-6h-13.71l3.43 6h13.71z" fill="#FFBA00"/>
                 </svg>
                 <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>Google Drive</span>
-                {providerType === 'google_drive' && <span style={{ fontSize: '0.7rem', color: 'var(--gold-400)', marginLeft: 'auto' }}>Aktiif</span>}
+                {providerType === 'google_drive' && <span style={{ fontSize: '0.7rem', color: 'var(--gold-400)', marginLeft: 'auto' }}>Aktif</span>}
               </div>
               <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Gratis, data disimpan di folder privat Drive Anda.</div>
             </div>
@@ -294,11 +292,10 @@ export default function Pengaturan() {
               </button>
             )}
           </div>
-        </div>
+        </CollapsibleCard>
 
         {/* ─── Ekspor / Impor Manual ─── */}
-        <div className="card">
-          <h3 style={{ marginBottom: 4, fontSize: '1rem', fontWeight: 700 }}>📁 Backup Manual</h3>
+        <CollapsibleCard title="Backup Manual" icon="📁">
           <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: 16 }}>
             Unduh data sebagai file JSON untuk disimpan di Google Drive, flashdisk, atau dikirim via WhatsApp.
           </p>
@@ -330,11 +327,10 @@ export default function Pengaturan() {
             2. Upload file ke Google Drive / kirim via WhatsApp<br />
             3. Di HP lain, buka aplikasi ini → klik <em>Impor dari File</em>
           </div>
-        </div>
+        </CollapsibleCard>
 
         {/* ─── Statistik ─── */}
-        <div className="card">
-          <h3 style={{ marginBottom: 12, fontSize: '1rem', fontWeight: 700 }}>📊 Statistik Data</h3>
+        <CollapsibleCard title="Statistik Data" icon="📊">
           <div className="grid-3">
             {[
               { label: 'Orang', value: data.orang.length, icon: '👤' },
@@ -348,11 +344,52 @@ export default function Pengaturan() {
               </div>
             ))}
           </div>
-        </div>
+        </CollapsibleCard>
+
+        {/* ─── Tentang Aplikasi ─── */}
+        <CollapsibleCard title="Tentang Aplikasi" icon="ℹ️">
+          <div style={{ lineHeight: 1.6 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+              <img src="/favicon.svg" alt="Buwuhan Logo" width="48" height="48" />
+              <div>
+                <h4 style={{ margin: 0 }}>Buwuhan Tracker</h4>
+                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Versi 1.0.0 (Vibe Code Edition)</div>
+              </div>
+            </div>
+            
+            <p style={{ fontSize: '0.9rem', marginBottom: '16px' }}>
+              Aplikasi manajemen sumbangan hajatan mandiri, aman, dan transparan. 
+              Dikembangkan murni menggunakan kolaborasi AI (Vibe Code).
+            </p>
+
+            <div style={{ 
+              background: 'var(--bg-card-2)', 
+              padding: '16px', 
+              borderRadius: 'var(--radius-md)',
+              fontSize: '0.82rem',
+              border: '1px solid var(--border)'
+            }}>
+              <h5 style={{ marginTop: 0, marginBottom: '8px', color: 'var(--gold-400)' }}>Ringkasan Lisensi MIT (Bahasa Indonesia)</h5>
+              <ul style={{ paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <li>Software ini <strong>gratis</strong> dan boleh digunakan siapa saja.</li>
+                <li>Boleh dimodifikasi dan didistribusikan ulang.</li>
+                <li>Wajib menyertakan nama pencipta asli (hak cipta) di salinan software.</li>
+                <li>Software disediakan "apa adanya" tanpa garansi apa pun.</li>
+              </ul>
+              <div style={{ marginTop: '12px', borderTop: '1px solid var(--border)', paddingTop: '12px', display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noreferrer" style={{ color: 'var(--gold-400)', fontWeight: 600 }}>
+                  Lihat Lisensi Asli (MIT) ↗
+                </a>
+                <a href="https://github.com/buwuhan/buwuhan.github.io" target="_blank" rel="noreferrer" style={{ color: 'var(--gold-400)', fontWeight: 600 }}>
+                  Kode Sumber (GitHub) ↗
+                </a>
+              </div>
+            </div>
+          </div>
+        </CollapsibleCard>
 
         {/* ─── Reset ─── */}
-        <div className="card" style={{ borderColor: 'rgba(244,63,94,0.2)' }}>
-          <h3 style={{ marginBottom: 4, fontSize: '1rem', fontWeight: 700, color: 'var(--rose-400)' }}>⚠️ Zona Berbahaya</h3>
+        <CollapsibleCard title="Zona Berbahaya" icon="⚠️">
           <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: 16 }}>
             Hapus semua data. Pastikan sudah ekspor backup sebelumnya.
           </p>
@@ -381,7 +418,7 @@ export default function Pengaturan() {
               </div>
             </div>
           )}
-        </div>
+        </CollapsibleCard>
 
       </div>
     </div>
